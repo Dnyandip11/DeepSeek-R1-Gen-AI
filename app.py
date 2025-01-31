@@ -11,40 +11,47 @@ from langchain_core.prompts import (
 # Custom CSS styling
 st.markdown("""
 <style>
-    /* Existing styles */
+    /* Set main background to white */
     .main {
-        background-color: #1a1a1a;
-        color: #ffffff;
+        background-color: #ffffff; /* White background */
+        color: #000000; /* Black text */
     }
+
+    /* Set sidebar background to light gray */
     .sidebar .sidebar-content {
-        background-color: #2d2d2d;
+        background-color: #f8f9fa; /* Light gray sidebar */
     }
+
+    /* Set input field text to black */
     .stTextInput textarea {
-        color: #ffffff !important;
+        color: #000000 !important;
     }
-    
-    /* Add these new styles for select box */
+
+    /* Set select box colors */
     .stSelectbox div[data-baseweb="select"] {
-        color: white !important;
-        background-color: #3d3d3d !important;
+        color: black !important;
+        background-color: #ffffff !important;
     }
-    
+
     .stSelectbox svg {
-        fill: white !important;
+        fill: black !important;
     }
-    
+
     .stSelectbox option {
-        background-color: #2d2d2d !important;
-        color: white !important;
+        background-color: #ffffff !important;
+        color: black !important;
     }
-    
+
     /* For dropdown menu items */
     div[role="listbox"] div {
-        background-color: #2d2d2d !important;
-        color: white !important;
+        background-color: #ffffff !important;
+        color: black !important;
     }
 </style>
 """, unsafe_allow_html=True)
+
+
+
 st.title("🧠 DeepSeek Code Companion")
 st.caption("🚀 Your AI Pair Programmer with Debugging Superpowers")
 
