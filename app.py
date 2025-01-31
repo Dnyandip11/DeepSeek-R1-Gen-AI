@@ -102,7 +102,25 @@ user_query = st.chat_input("Type you coding question here")
 
 def generate_ai_response(prompt_chain):
     processing_pipeline = prompt_chain | llm_engine | StrOutputParser()
-    return processing_pipeline({})
+    
+    # Debugging: Print what the processing pipeline looks like
+    print("Processing Pipeline:", processing_pipeline)
+
+    try:
+        response = processing_pipeline({"input": "Test"})  # Send a test input
+        print("AI Response:", response)  # Debugging output
+        return response
+    except Exception as e:
+        print(f"Error: {e}")
+        st.error(f"Error generating AI response: {e}")
+        return "Sorry, an error occurred."
+
+try:
+    test_output = llm_engine.invoke("Hello AI")
+    print("Test Output from LLM:", test_output)
+except Exception as e:
+    print(f"Error in LLM Engine: {e}")
+
 
 
 def build_prompt_chain():
@@ -111,6 +129,10 @@ def build_prompt_chain():
         if msg["role"] =="user":
             prompt_sequence.append(HumanMessagePromptTemplate.from_template(msg["content"]))
     return ChatPromptTemplate.from_messages(prompt_sequence)
+
+prompt_chain = build_prompt_chain()
+print("Prompt Chain:", prompt_chain)
+
 
 if user_query:
     #Add user message to log
